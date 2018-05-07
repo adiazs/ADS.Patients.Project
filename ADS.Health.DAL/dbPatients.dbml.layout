@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 8.5" name="dbPatients">
+  <DataContextMoniker Name="/dbPatientsDataContext" />
+  <nestedChildShapes>
+    <classShape Id="8599d736-998c-4bc4-8349-dc5a3c60aec4" absoluteBounds="1.25, 3.125, 2, 1.3862939453125005">
+      <DataClassMoniker Name="/dbPatientsDataContext/BloodTypes" />
+      <nestedChildShapes>
+        <elementListCompartment Id="ac066f63-3f83-4b17-8bb3-ab3d0ad49d05" absoluteBounds="1.2650000000000001, 3.585, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="0f21771f-5b7e-464a-a4e0-654639a49921" absoluteBounds="0.875, 1, 2, 1.1939925130208335">
+      <DataClassMoniker Name="/dbPatientsDataContext/Countries" />
+      <nestedChildShapes>
+        <elementListCompartment Id="1dc7836b-3dad-494c-af34-3eb064f57e15" absoluteBounds="0.89, 1.46, 1.9700000000000002, 0.63399251302083326" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="be83988c-ca7a-4a8b-91c9-ec9a8c7ac4f7" absoluteBounds="4.375, 1.75, 2, 2.3478011067708335">
+      <DataClassMoniker Name="/dbPatientsDataContext/Patients" />
+      <nestedChildShapes>
+        <elementListCompartment Id="568cf62d-bc98-45c6-96d2-29fe3e284977" absoluteBounds="4.39, 2.21, 1.9700000000000002, 1.7878011067708335" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(3.25 : 3.61140055338542); (4.375 : 3.61140055338542)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/dbPatientsDataContext/BloodTypes/BloodTypes_Patients" />
+      <nodes>
+        <classShapeMoniker Id="8599d736-998c-4bc4-8349-dc5a3c60aec4" />
+        <classShapeMoniker Id="be83988c-ca7a-4a8b-91c9-ec9a8c7ac4f7" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(2.875 : 1.97199625651042); (4.375 : 1.97199625651042)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/dbPatientsDataContext/Countries/Countries_Patients" />
+      <nodes>
+        <classShapeMoniker Id="0f21771f-5b7e-464a-a4e0-654639a49921" />
+        <classShapeMoniker Id="be83988c-ca7a-4a8b-91c9-ec9a8c7ac4f7" />
+      </nodes>
+    </associationConnector>
+  </nestedChildShapes>
+</ordesignerObjectsDiagram>

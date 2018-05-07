@@ -1,0 +1,84 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="bd_Health" Class="dbPatientsDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=ANTHONNY\ANTHONNY;Initial Catalog=bd_Health;User ID=Tonny" SettingsObjectName="ADS.Health.DAL.Properties.Settings" SettingsPropertyName="bd_HealthConnectionString1" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.BloodTypes" Member="BloodTypes">
+    <Type Name="BloodTypes">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Description" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Abbreviation" Type="System.String" DbType="Char(3) NOT NULL" CanBeNull="false" />
+      <Association Name="BloodTypes_Patients" Member="Patients" ThisKey="ID" OtherKey="BloodType" Type="Patients" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Countries" Member="Countries">
+    <Type Name="Countries">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(150) NOT NULL" CanBeNull="false" />
+      <Association Name="Countries_Patients" Member="Patients" ThisKey="ID" OtherKey="Nationality" Type="Patients" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Patients" Member="Patients">
+    <Type Name="Patients">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="FirstName" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="LastName" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="DateBirth" Type="System.String" DbType="NVarChar(10) NOT NULL" CanBeNull="false" />
+      <Column Name="Nationality" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="BloodType" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Diseases" Type="System.String" DbType="NVarChar(150)" CanBeNull="true" />
+      <Column Name="PhoneNumber" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="BloodTypes_Patients" Member="BloodTypes" ThisKey="BloodType" OtherKey="ID" Type="BloodTypes" IsForeignKey="true" />
+      <Association Name="Countries_Patients" Member="Countries" ThisKey="Nationality" OtherKey="ID" Type="Countries" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Function Name="dbo.sp_Delete_Patient" Method="sp_Delete_Patient">
+    <Parameter Name="ID" Parameter="iD" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.sp_Get_BloodTypes" Method="sp_Get_BloodTypes">
+    <ElementType Name="sp_Get_BloodTypesResult">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Description" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Abbreviation" Type="System.String" DbType="Char(3) NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.sp_Get_Countries" Method="sp_Get_Countries">
+    <ElementType Name="sp_Get_CountriesResult">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(150) NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.sp_Insert_Patients" Method="sp_Insert_Patients">
+    <Parameter Name="FirstName" Parameter="firstName" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="LastName" Parameter="lastName" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="DateBirth" Parameter="dateBirth" Type="System.String" DbType="NVarChar(10)" />
+    <Parameter Name="Nationality" Parameter="nationality" Type="System.Int32" DbType="Int" />
+    <Parameter Name="BloodType" Parameter="bloodType" Type="System.Int32" DbType="Int" />
+    <Parameter Name="Diseases" Parameter="diseases" Type="System.String" DbType="NVarChar(150)" />
+    <Parameter Name="PhoneNumber" Parameter="phoneNumber" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.sp_Update_Patient" Method="sp_Update_Patient">
+    <Parameter Name="FirstName" Parameter="firstName" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="LastName" Parameter="lastName" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="DateBirth" Parameter="dateBirth" Type="System.String" DbType="NVarChar(10)" />
+    <Parameter Name="Nationality" Parameter="nationality" Type="System.Int32" DbType="Int" />
+    <Parameter Name="BloodType" Parameter="bloodType" Type="System.Int32" DbType="Int" />
+    <Parameter Name="Diseases" Parameter="diseases" Type="System.String" DbType="NVarChar(150)" />
+    <Parameter Name="PhoneNumber" Parameter="phoneNumber" Type="System.Int32" DbType="Int" />
+    <Parameter Name="ID" Parameter="iD" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.sp_Get_Patients" Method="sp_Get_Patients">
+    <ElementType Name="sp_Get_PatientsResult">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="FirstName" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="LastName" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="DateBirth" Type="System.String" DbType="NVarChar(10) NOT NULL" CanBeNull="false" />
+      <Column Name="Diseases" Type="System.String" DbType="NVarChar(150)" CanBeNull="true" />
+      <Column Name="PhoneNumber" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="BloodType" Type="System.String" DbType="Char(3) NOT NULL" CanBeNull="false" />
+      <Column Name="idBloodType" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Nationality" Type="System.String" DbType="NVarChar(150) NOT NULL" CanBeNull="false" />
+      <Column Name="idCountry" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+</Database>
